@@ -1,7 +1,4 @@
 services:
-  networks:
-  opsnerds:
-    driver: bridge
   nginx:
     image: nginx:alpine
     container_name: opsnerds-nginx
@@ -12,8 +9,6 @@ services:
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - php
-    networks:
-      - opsnerds
 
   php:
     build: ./docker/php
