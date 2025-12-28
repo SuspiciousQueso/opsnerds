@@ -1,4 +1,7 @@
 services:
+  networks:
+  opsnerds:
+    driver: bridge
   nginx:
     image: nginx:alpine
     container_name: opsnerds-nginx
