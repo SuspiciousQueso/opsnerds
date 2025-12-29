@@ -7,7 +7,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'home';
 
 switch ($action) {
     case 'register':
-        include __DIR__ . '/../views/register.php';
+        include __DIR__ . '/../views/AccountCreationForm.php';
         break;
 
     case 'do_register':

@@ -1,4 +1,8 @@
 <?php
+// Force error reporting on for debugging
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 // Session security - MUST be before session_start
 ini_set('session.cookie_httponly', 1);
 ini_set('session.use_only_cookies', 1);
