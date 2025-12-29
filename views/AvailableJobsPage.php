@@ -13,6 +13,7 @@
     </style>
 </head>
 <body>
+<?php include __DIR__ . '/partials/header.php'; ?>
     <nav><a href="index.php?action=dashboard">← Dashboard</a></nav>
     <h1>Available Jobs</h1>
 

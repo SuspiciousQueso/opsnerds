@@ -12,6 +12,7 @@
     </style>
 </head>
 <body>
+<?php include __DIR__ . '/partials/header.php'; ?>
     <nav>
         <strong>OpsNerds</strong> | 
         <a href="index.php?action=profile">My Profile</a> | 

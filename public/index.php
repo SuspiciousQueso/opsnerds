@@ -38,14 +38,15 @@ switch ($action) {
         include __DIR__ . '/../views/Dashboard.php';
         break;
 
-    case 'home':
-    default:
-        if (isset($_SESSION['user_id'])) {
-            include __DIR__ . '/../views/Dashboard.php';
-        } else {
-            include __DIR__ . '/../views/AccountCreationForm.php';
-        }
+    case 'about':
+        include __DIR__ . '/../views/AboutPage.php';
         break;
+
+    case 'contact':
+        include __DIR__ . '/../views/ContactPage.php';
+        break;
+
+    case 'home':
 
     case 'update_profile':
         require_once __DIR__ . '/../src/ProfileController.php';

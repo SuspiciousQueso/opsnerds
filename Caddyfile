@@ -1,13 +1,16 @@
 jobs.mspguild.tech {
-    # Point to the 'php' service in docker-compose
-    # Assumes your PHP container is running a webserver on port 80 
-    # (or use php-fpm if your Dockerfile is set up for that)
-    reverse_proxy php:80
-    
+    # Set the web root
+    root * /var/www/html/public
+
+    # Serve static files
+    file_server
+
+    # Route PHP requests to the PHP-FPM container
+    php_fastcgi php:9000
+
     # Enable compression
     encode zstd gzip
-    
-    # Log requests
+
     log {
         output file /data/access.log
     }

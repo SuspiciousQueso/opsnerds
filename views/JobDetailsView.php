@@ -12,6 +12,7 @@
     </style>
 </head>
 <body>
+<?php include __DIR__ . '/partials/header.php'; ?>
     <nav><a href="index.php?action=browse_jobs">← Back to Feed</a></nav>
 
     <?php if (isset($_GET['status']) && $_GET['status'] === 'posted'): ?>
