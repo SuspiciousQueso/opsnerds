@@ -12,21 +12,7 @@
     </style>
 </head>
 <body>
-    <h1>Login to OpsNerds</h1>
-
-    <?php if (isset($_GET['status']) && $_GET['status'] === 'registered'): ?>
-        <div class="status">Registration successful! Please login below.</div>
-    <?php endif; ?>
-
+    <h1>Login</h1>
     <form action="index.php?action=do_login" method="POST">
-        <label>Email Address</label>
-        <input type="email" name="email" required autofocus>
-
-        <label>Password</label>
-        <input type="password" name="password" required>
-
-        <button type="submit">Login</button>
-    </form>
-    <p><small>Need an account? <a href="index.php?action=home">Register here</a></small></p>
-</body>
-</html>
+        <?php echo \App\Helpers::csrf_field(); ?>
+        <label for="email">Email</label>

@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/Database.php';
-
+##require_once __DIR__ . '/Database.php';
+namespace App;
 class JobController {
     /**
      * Show the job posting form

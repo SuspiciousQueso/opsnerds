@@ -11,8 +11,10 @@
     </style>
 </head>
 <body>
-    <h1>Create an Account</h1>
+    <h1>Create Account</h1>
     <form action="index.php?action=do_register" method="POST">
+        <?php echo \App\Helpers::csrf_field(); ?>
+        <label for="full_name">Full Name</label>
         <label>Email Address</label>
         <input type="email" name="email" required>
 

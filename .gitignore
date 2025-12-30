@@ -9,6 +9,14 @@ caddy_config/
 # Environment secrets
 .env
 
+# Composer dependencies
+vendor/
+composer.lock
+
+# Logs
+logs/
+*.log
+
 # OS files
 .DS_Store
 Thumbs.db
