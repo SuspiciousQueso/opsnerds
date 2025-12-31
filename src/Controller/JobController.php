@@ -58,6 +58,9 @@ class JobController {
     
         $stmt = $db->prepare("SELECT j.*, u.full_name FROM jobs j JOIN users u ON j.poster_id = u.id WHERE j.id = ?");
         $stmt->execute([$id]);
+        
+        // Add this line to actually fetch the job data
+        $job = $stmt->fetch();
 
         if (!$job) {
             die("Job not found.");
