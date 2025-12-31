@@ -5,10 +5,16 @@
     <aside class="w-64 bg-slate-900 border-r border-slate-800 shrink-0 hidden lg:block">
         <div class="p-8">
             <h3 class="text-[10px] font-black text-slate-600 uppercase tracking-[0.3em] mb-6">Directory</h3>
-            <div class="space-y-2 text-xs font-mono">
-                <p class="text-emerald-500">/about_us.md</p>
-                <p class="text-slate-600 hover:text-slate-400 cursor-pointer">/manifesto.sh</p>
-                <p class="text-slate-600 hover:text-slate-400 cursor-pointer">/protocols.json</p>
+            <div class="space-y-4 text-xs font-mono">
+                <a href="index.php?action=about" class="block text-emerald-500 hover:text-emerald-400 transition">
+                    <span class="text-slate-700 mr-1">#</span> about_us.md
+                </a>
+                <a href="index.php?action=manifesto" class="block text-slate-500 hover:text-slate-300 transition">
+                    <span class="text-slate-700 mr-1">#</span> manifesto.sh
+                </a>
+                <a href="index.php?action=contact" class="block text-slate-500 hover:text-slate-300 transition">
+                    <span class="text-slate-700 mr-1">#</span> protocols.json
+                </a>
             </div>
         </div>
     </aside>
