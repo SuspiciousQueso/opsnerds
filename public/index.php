@@ -22,8 +22,11 @@ Helpers::verify_csrf();
 $action = $_GET['action'] ?? 'home';
 
 switch ($action) {
+   // case 'home':
+    //   include __DIR__ . '/../views/AboutPage.php'; // Or LandingPage if you have it
+           // break;
     case 'home':
-        include __DIR__ . '/../views/AboutPage.php'; // Or LandingPage if you have it
+        include __DIR__ . '/../views/LandingPage.php';
         break;
 
     case 'about':

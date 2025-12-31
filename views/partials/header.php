@@ -12,23 +12,21 @@ $isLoggedIn = isset($_SESSION['user_id']);
 <body class="h-full flex flex-col overflow-hidden">
 
 <!-- Main Top Navigation -->
-<nav class="bg-slate-900 text-white px-4 py-2 flex justify-between items-center shadow-md z-50">
+<nav class="bg-slate-900 text-white px-4 py-2 flex justify-between items-center shadow-md z-50 border-b border-slate-800">
     <div class="flex items-center gap-4">
-        <a href="index.php" class="text-xl font-bold tracking-tight text-emerald-400">OpsNerds<span class="text-white text-xs ml-1 opacity-50">v1.0</span></a>
-        <div class="hidden md:flex gap-4 ml-8 text-sm text-slate-300">
-            <a href="index.php?action=browse_jobs" class="hover:text-white transition">Browse Workspace</a>
-            <a href="index.php?action=about" class="hover:text-white transition">About</a>
+        <a href="index.php" class="text-xl font-black tracking-tighter text-emerald-400 uppercase">Ops<span class="text-white">Nerds</span></a>
+    </div>
+
+    <!-- The Command Palette (Search) -->
+    <div class="hidden md:flex flex-1 max-w-md mx-8">
+        <div class="relative w-full group">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <span class="text-slate-500 text-xs">sh</span>
+            </div>
+            <input type="text" 
+                   class="block w-full bg-slate-800 border border-slate-700 rounded-md py-1.5 pl-10 pr-3 text-sm placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 transition" 
+                   placeholder="Search infrastructure jobs... (Ctrl+K)">
         </div>
     </div>
     
     <div class="flex items-center gap-4">
-        <?php if ($isLoggedIn): ?>
-            <span class="text-xs text-slate-400">Connected: <span class="text-emerald-400"><?php echo $_SESSION['user_role']; ?></span></span>
-            <a href="index.php?action=dashboard" class="bg-emerald-600 hover:bg-emerald-500 text-xs font-bold px-3 py-1 rounded transition">Dashboard</a>
-            <a href="index.php?action=logout" class="text-xs text-slate-400 hover:text-white">Logout</a>
-        <?php else: ?>
-            <a href="index.php?action=login" class="text-sm hover:text-emerald-400 transition">Login</a>
-            <a href="index.php?action=register" class="bg-emerald-600 hover:bg-emerald-500 text-sm font-bold px-4 py-1 rounded transition">Join</a>
-        <?php endif; ?>
-    </div>
-</nav>
