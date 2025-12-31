@@ -29,6 +29,10 @@ switch ($action) {
         include __DIR__ . '/../views/LandingPage.php';
         break;
 
+    case 'manifesto':
+        include __DIR__ . '/../views/ManifestoPage.php';
+        break;
+
     case 'about':
         include __DIR__ . '/../views/AboutPage.php';
         break;
