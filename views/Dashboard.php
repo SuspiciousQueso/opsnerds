@@ -1,17 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Dashboard - OpsNerds</title>
-    <style>
-        body { font-family: sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; line-height: 1.6; }
-        .card { border: 1px solid #ddd; padding: 20px; margin-bottom: 20px; border-radius: 8px; }
-        .btn { display: inline-block; padding: 10px 15px; background: #007BFF; color: white; text-decoration: none; border-radius: 4px; }
-        .btn-secondary { background: #6c757d; }
-        nav { margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-    </style>
-</head>
-<body class="bg-slate-50 flex flex-col min-h-screen">
 <?php include __DIR__ . '/partials/header.php'; ?>
 
 <!-- The main container needs to grow to fill the screen below the header -->
