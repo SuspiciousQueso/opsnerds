@@ -11,11 +11,9 @@ $isLoggedIn = isset($_SESSION['user_id']);
 </head>
 <body class="h-full flex flex-col overflow-hidden">
 
-<!-- Main Top Navigation -->
-<nav class="bg-slate-900 text-white px-4 py-2 flex justify-between items-center shadow-md z-50 border-b border-slate-800">
-    <div class="flex items-center gap-4">
+<nav class="w-full bg-slate-900 text-white px-6 py-2 flex justify-between items-center shadow-md z-50 border-b border-slate-800">
+    <div class="flex items-center gap-6">
         <a href="index.php" class="text-xl font-black tracking-tighter text-emerald-400 uppercase">Ops<span class="text-white">Nerds</span></a>
-    </div>
 
     <!-- The Command Palette (Search) -->
     <div class="hidden md:flex flex-1 max-w-md mx-8">
