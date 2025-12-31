@@ -6,7 +6,7 @@ use App\Security\Helpers;
 use App\Controller\AuthController;
 use App\Controller\JobController;
 use App\Controller\SupportRequestController;
-
+use App\Controller\ProfileController;
 // Load environment and validate
 Environment::load(__DIR__ . '/..');
 
@@ -80,6 +80,22 @@ switch ($action) {
 
     case 'submit_request':
         (new SupportRequestController())->handleSubmission();
+        break;
+
+    case 'profile':
+        (new ProfileController())->view();
+        break;
+
+    case 'update_bio':
+        (new ProfileController())->updateBio();
+        break;
+
+    case 'add_experience':
+        (new ProfileController())->addExperience();
+        break;
+
+    case 'add_project':
+        (new ProfileController())->addProject();
         break;
 
     default:

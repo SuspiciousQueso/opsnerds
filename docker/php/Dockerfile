@@ -22,3 +22,7 @@ WORKDIR /var/www/html
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html
+
+# Make resume storage
+RUN mkdir -p /var/www/html/storage/resumes \
+    && chown -R www-data:www-data /var/www/html/storage

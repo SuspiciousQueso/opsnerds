@@ -29,7 +29,7 @@ class ProfileController {
         $projects = $stmt->fetchAll();
 
         // Match your actual filename
-        include __DIR__ . '/../views/UserProfilePage.php';
+        include __DIR__ . '/../../views/UserProfilePage.php';
     }
 
     public function updateBio() {
