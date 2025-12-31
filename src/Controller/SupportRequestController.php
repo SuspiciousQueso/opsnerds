@@ -1,6 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Controller;
+
+use App\Config\Database;
 
 class SupportRequestController {
     public function handleSubmission() {

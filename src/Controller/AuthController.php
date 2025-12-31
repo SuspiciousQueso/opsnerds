@@ -1,7 +1,9 @@
 <?php
 
-namespace App;
+namespace App\Controller;
 
+use App\Config\Database;
+use App\Security\Helpers;
 class AuthController {
     public function register() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

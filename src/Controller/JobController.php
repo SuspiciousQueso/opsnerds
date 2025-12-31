@@ -1,6 +1,8 @@
 <?php
 ##require_once __DIR__ . '/Database.php';
-namespace App;
+namespace App\Controller;
+use App\Config\Database;
+
 class JobController {
     /**
      * Show the job posting form
@@ -11,7 +13,7 @@ class JobController {
             exit;
         }
         // Match your actual filename
-        include __DIR__ . '/../views/JobPosterForm.php';
+        include __DIR__ . '/../../views/JobPosterForm.php';
     }
 
     /**
@@ -41,11 +43,10 @@ class JobController {
      */
     public function index() {
         $db = Database::getInstance();
-        $stmt = $db->query("SELECT j.*, u.display_name FROM jobs j JOIN users u ON j.poster_id = u.id ORDER BY j.created_at DESC");
+        $stmt = $db->query("SELECT j.*, u.full_name FROM jobs j JOIN users u ON j.poster_id = u.id ORDER BY j.created_at DESC");
         $jobs = $stmt->fetchAll();
 
-        // Match your actual filename
-        include __DIR__ . '/../views/AvailableJobsPage.php';
+        include __DIR__ . '/../../views/AvailableJobsPage.php';
     }
 
     /**
@@ -54,17 +55,16 @@ class JobController {
     public function view() {
         $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
         $db = Database::getInstance();
-        
-        $stmt = $db->prepare("SELECT j.*, u.display_name FROM jobs j JOIN users u ON j.poster_id = u.id WHERE j.id = ?");
+    
+        $stmt = $db->prepare("SELECT j.*, u.full_name FROM jobs j JOIN users u ON j.poster_id = u.id WHERE j.id = ?");
         $stmt->execute([$id]);
-        $job = $stmt->fetch();
 
         if (!$job) {
             die("Job not found.");
         }
 
         // Match your actual filename
-        include __DIR__ . '/../views/JobDetailsView.php';
+        include __DIR__ . '/../../views/JobDetailsView.php';
     }
 
     /**
@@ -111,7 +111,7 @@ class JobController {
         $stmt->execute([$userId]);
         $myJobs = $stmt->fetchAll();
 
-        include __DIR__ . '/../views/MyJobPosts.php';
+        include __DIR__ . '/../../views/MyJobPosts.php';
     }
 
     /**
@@ -137,15 +137,13 @@ class JobController {
 
         // Get the applications and the seeker's display name
         $stmt = $db->prepare("
-            SELECT a.*, u.display_name, u.email 
+            SELECT a.*, u.full_name, u.email 
             FROM job_applications a 
             JOIN users u ON a.seeker_id = u.id 
             WHERE a.job_id = ? 
             ORDER BY a.created_at DESC
         ");
-        $stmt->execute([$jobId]);
-        $applications = $stmt->fetchAll();
 
-        include __DIR__ . '/../views/ViewApplications.php';
+        include __DIR__ . '/../../views/ViewApplications.php';
     }
 }

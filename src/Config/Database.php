@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Config;
 
 use PDO;
 use PDOException;
@@ -11,10 +11,10 @@ class Database {
     private $connection;
 
     private function __construct() {
-        $host = $_ENV['DB_HOST'] ?? 'db';
-        $name = $_ENV['DB_NAME'] ?? 'opsnerds';
-        $user = $_ENV['DB_USER'] ?? 'opsnerds';
-        $pass = $_ENV['DB_PASSWORD'] ?? 'opsnerds';
+        $host = getenv('DB_HOST') ?: 'db';
+        $name = getenv('DB_NAME') ?: 'opsnerds';
+        $user = getenv('DB_USER') ?: 'opsnerds';
+        $pass = getenv('DB_PASSWORD') ?: 'opsnerds_password';
 
         try {
             $dsn = "mysql:host=$host;dbname=$name;charset=utf8mb4";

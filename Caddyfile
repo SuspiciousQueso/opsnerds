@@ -1,17 +1,9 @@
-jobs.mspguild.tech {
-    # Set the web root
+:80 {
     root * /var/www/html/public
-
-    # Serve static files
+    php_fastcgi php:9000
     file_server
 
-    # Route PHP requests to the PHP-FPM container
-    php_fastcgi php:9000
-
-    # Enable compression
-    encode zstd gzip
-
     log {
-        output file /data/access.log
+        output stdout
     }
 }

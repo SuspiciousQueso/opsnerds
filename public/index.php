@@ -1,63 +1,29 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 
-// Load environment variables
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
-$dotenv->safeLoad();
+use App\Config\Environment;
+use App\Security\Helpers;
+use App\Controller\AuthController;
+use App\Controller\JobController;
+use App\Controller\SupportRequestController;
 
-// Start session with security settings
-ini_set('session.cookie_httponly', 1);
-ini_set('session.use_only_cookies', 1);
-if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
-    ini_set('session.cookie_secure', 1);
-}
+// Load environment and validate
+Environment::load(__DIR__ . '/..');
+
+// ... session setup ...
 session_start();
 
-// Initialize CSRF token if not exists
-if (empty($_SESSION['csrf_token'])) {
-    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-}
+// Define global variable for views
+$isLoggedIn = isset($_SESSION['user_id']);
 
-// Global CSRF Verification for all POST requests
-\App\Helpers::verify_csrf();
+// Global CSRF Verification
+Helpers::verify_csrf();
 
-require_once __DIR__ . '/../config/config.php';
-require_once __DIR__ . '/../src/Database.php';
-
-// Simple routing logic
-$action = isset($_GET['action']) ? $_GET['action'] : 'home';
+$action = $_GET['action'] ?? 'home';
 
 switch ($action) {
-    case 'register':
-        include __DIR__ . '/../views/AccountCreationForm.php';
-        break;
-
-    case 'do_register':
-        require_once __DIR__ . '/../src/AuthController.php';
-        (new AuthController())->register();
-        break;
-
-    case 'login':
-        include __DIR__ . '/../views/LoginForm.php';
-        break;
-
-    case 'do_login':
-        require_once __DIR__ . '/../src/AuthController.php';
-        (new AuthController())->login();
-        break;
-
-    case 'logout':
-        require_once __DIR__ . '/../src/AuthController.php';
-        (new AuthController())->logout();
-        break;
-
-    case 'dashboard':
-        // Protected route
-        if (!isset($_SESSION['user_id'])) { 
-            header("Location: index.php?action=login"); 
-            exit; 
-        }
-        include __DIR__ . '/../views/Dashboard.php';
+    case 'home':
+        include __DIR__ . '/../views/AboutPage.php'; // Or LandingPage if you have it
         break;
 
     case 'about':
@@ -68,59 +34,56 @@ switch ($action) {
         include __DIR__ . '/../views/ContactPage.php';
         break;
 
-    case 'home':
-
-    case 'update_profile':
-        require_once __DIR__ . '/../src/ProfileController.php';
-        (new ProfileController())->updateBio();
+    case 'login':
+        include __DIR__ . '/../views/LoginForm.php';
         break;
 
-    case 'add_experience':
-        require_once __DIR__ . '/../src/ProfileController.php';
-        (new ProfileController())->addExperience();
+    case 'do_login':
+        (new AuthController())->login();
         break;
 
-    case 'add_project':
-        require_once __DIR__ . '/../src/ProfileController.php';
-        (new ProfileController())->addProject();
+    case 'register':
+        include __DIR__ . '/../views/AccountCreationForm.php';
         break;
 
-    case 'post_job':
-        require_once __DIR__ . '/../src/JobController.php';
-        (new JobController())->create();
+    case 'do_register':
+        (new AuthController())->register();
         break;
 
-    case 'do_post_job':
-        require_once __DIR__ . '/../src/JobController.php';
-        (new JobController())->store();
+    case 'logout':
+        (new AuthController())->logout();
         break;
 
     case 'browse_jobs':
-        require_once __DIR__ . '/../src/JobController.php';
         (new JobController())->index();
         break;
 
     case 'view_job':
-        require_once __DIR__ . '/../src/JobController.php';
         (new JobController())->view();
         break;
 
-    case 'apply_job':
-        require_once __DIR__ . '/../src/JobController.php';
-        (new JobController())->apply();
+    case 'post_job':
+        (new JobController())->create();
         break;
 
-        case 'my_jobs':
-            require_once __DIR__ . '/../src/JobController.php';
-            (new JobController())->myJobs();
-            break;
+    case 'do_post_job':
+        (new JobController())->store();
+        break;
 
-        case 'view_apps':
-            require_once __DIR__ . '/../src/JobController.php';
-            (new JobController())->viewApplications();
-            break;
+    case 'dashboard':
+        if (!$isLoggedIn) {
+            header("Location: index.php?action=login");
+            exit;
+        }
+        include __DIR__ . '/../views/Dashboard.php';
+        break;
+
+    case 'submit_request':
+        (new SupportRequestController())->handleSubmission();
+        break;
+
+    default:
+        http_response_code(404);
+        echo "404 - Page Not Found";
+        break;
 }
-
-// ... existing code ...
-
-// ... existing code ...

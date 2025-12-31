@@ -1,6 +1,8 @@
 <?php
 #require_once __DIR__ . '/Database.php';
-namespace App;
+namespace App\Controller;
+use App\Config\Database;
+
 class ProfileController {
     public function view() {
         if (!isset($_SESSION['user_id'])) {

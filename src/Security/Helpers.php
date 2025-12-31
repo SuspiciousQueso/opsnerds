@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Security;
 
 class Helpers {
     /**
