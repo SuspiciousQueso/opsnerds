@@ -18,40 +18,44 @@
     </aside>
 
     <!-- CENTER PANE: The Main Workspace -->
-    <section class="flex-1 overflow-y-auto p-8">
-        <div class="max-w-5xl mx-auto">
-            <header class="mb-10">
-                <div class="flex items-center gap-2 mb-1">
-                    <span class="text-[10px] bg-slate-100 text-slate-500 px-2 py-0.5 rounded font-mono">ID: <?php echo $_SESSION['user_id']; ?></span>
-                    <span class="text-[10px] bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded font-mono uppercase font-bold"><?php echo $_SESSION['user_role']; ?></span>
+    <section class="flex-1 overflow-y-auto p-10 bg-white">
+        <div class="w-full max-w-[1200px]"> <!-- Changed from max-w-4xl to allow more width -->
+            <header class="mb-12">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-[11px] bg-slate-100 text-slate-500 px-3 py-0.5 rounded-full font-mono">ID: <?php echo $_SESSION['user_id']; ?></span>
+                    <span class="text-[11px] bg-emerald-100 text-emerald-700 px-3 py-0.5 rounded-full font-mono uppercase font-bold"><?php echo $_SESSION['user_role']; ?></span>
                 </div>
-                <h1 class="text-4xl font-black text-slate-900 tracking-tight">Dashboard</h1>
-                <p class="text-slate-500">Welcome back to the OpsCenter.</p>
+                <h1 class="text-5xl font-black text-slate-900 tracking-tight">Dashboard</h1>
+                <p class="text-slate-600 text-lg">Welcome back to the <span class="font-bold">OpsCenter</span>.</p>
             </header>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Action Card -->
-                <div class="group bg-white border border-slate-200 p-8 rounded-2xl hover:border-emerald-500 hover:shadow-xl transition-all duration-300">
-                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewbox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                        </svg>
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-10"> <!-- Changed gap and added responsive grid -->
+                <!-- Action Card: Hire -->
+                <div class="group bg-slate-50 border border-slate-200 p-8 rounded-3xl hover:border-emerald-500 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500 shadow-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                            </svg>
+                        </div>
+                        <h2 class="text-3xl font-black text-slate-900 mb-4 tracking-tight uppercase">Hire an <span class="text-emerald-600">OpsNerd</span></h2>
+                        <p class="text-slate-600 mb-8 text-lg leading-relaxed">Infrastructure broken? Post a triage request and get an expert connected instantly.</p>
                     </div>
-                    <h2 class="text-2xl font-bold text-slate-900 mb-2">Hire an OpsNerd</h2>
-                    <p class="text-slate-500 mb-6 leading-relaxed">Infrastructure broken? Post a triage request and get an expert connected instantly.</p>
-                    <a href="index.php?action=post_job" class="inline-flex items-center gap-2 bg-emerald-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-emerald-500 transition shadow-lg shadow-emerald-200">Post New Ticket</a>
+                    <a href="index.php?action=post_job" class="inline-flex items-center justify-center gap-3 bg-emerald-600 text-white px-8 py-4 rounded-2xl font-black uppercase tracking-widest hover:bg-emerald-500 transition-all shadow-lg shadow-emerald-200 text-sm">Post New Ticket</a>
                 </div>
 
-                <!-- Action Card -->
-                <div class="group bg-white border border-slate-200 p-8 rounded-2xl hover:border-blue-500 hover:shadow-xl transition-all duration-300">
-                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-500 group-hover:text-white transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewbox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                        </svg>
+                <!-- Action Card: Find Work -->
+                <div class="group bg-slate-50 border border-slate-200 p-8 rounded-3xl hover:border-blue-500 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-blue-500 group-hover:text-white transition-all duration-500 shadow-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </div>
+                        <h2 class="text-3xl font-black text-slate-900 mb-4 tracking-tight uppercase">Find <span class="text-blue-600">Work</span></h2>
+                        <p class="text-slate-600 mb-8 text-lg leading-relaxed">Browse active infrastructure issues and put your engineering skills to work.</p>
                     </div>
-                    <h2 class="text-2xl font-bold text-slate-900 mb-2">Find Work</h2>
-                    <p class="text-slate-500 mb-6 leading-relaxed">Browse active infrastructure issues and put your engineering skills to work.</p>
-                    <a href="index.php?action=browse_jobs" class="inline-flex items-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-xl font-bold hover:bg-slate-800 transition shadow-lg shadow-slate-200">Browse Workspace</a>
+                    <a href="index.php?action=browse_jobs" class="inline-flex items-center justify-center gap-3 bg-slate-900 text-white px-8 py-4 rounded-2xl font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-lg shadow-slate-200 text-sm">Browse Workspace</a>
                 </div>
             </div>
         </div>
