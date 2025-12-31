@@ -2,25 +2,35 @@
 $isLoggedIn = isset($_SESSION['user_id']);
 ?>
 <!DOCTYPE html>
-<html lang="en" class="h-full bg-gray-50">
+<html lang="en" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>OpsNerds - The IT Marketplace</title>
+    <title>OpsNerds - Infrastructure Ready</title>
 </head>
-<body class="h-full flex flex-col bg-slate-900 overflow-hidden">
+<body class="h-full bg-slate-900 flex flex-col m-0 p-0 overflow-hidden">
 
-<!-- Navigation: Ensure this is w-full and NOT wrapped in a container -->
-<nav class="w-full bg-slate-900 text-white px-6 py-3 flex justify-between items-center shadow-2xl z-50 border-b border-slate-800">
-    <div class="flex items-center gap-8">
-        <a href="index.php" class="text-2xl font-black tracking-tighter text-emerald-400 uppercase hover:text-emerald-300 transition-colors">Ops<span class="text-white">Nerds</span></a>
-        
-        <!-- Command Palette (Search) -->
-        <div class="hidden md:flex items-center bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 w-64 group focus-within:ring-1 focus-within:ring-emerald-500 transition-all">
-            <span class="text-slate-500 text-xs font-mono mr-2">sh_</span>
-            <input type="text" class="bg-transparent border-none text-xs text-slate-200 focus:outline-none w-full" placeholder="find --jobs">
+<nav class="w-full bg-slate-900 text-white px-6 py-3 flex justify-between items-center z-50 border-b border-slate-800 shrink-0">
+    <div class="flex items-center gap-6">
+        <a href="index.php" class="text-2xl font-black tracking-tighter text-emerald-400 uppercase">Ops<span class="text-white">Nerds</span></a>
+
+        <div class="hidden md:flex items-center bg-slate-800 border border-slate-700 rounded px-3 py-1 text-[10px] font-mono text-slate-500">
+            sh_ find --jobs
         </div>
     </div>
-    
-    <div class="flex items-center gap-6">
+
+    <div class="flex gap-6 items-center">
+        <a href="index.php?action=browse_jobs" class="text-xs font-bold text-slate-400 hover:text-white uppercase tracking-widest">Workspace</a>
+        <a href="index.php?action=about" class="text-xs font-bold text-slate-400 hover:text-white uppercase tracking-widest">About</a>
+
+        <?php if ($isLoggedIn): ?>
+            <a href="index.php?action=dashboard" class="bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] font-black uppercase px-4 py-2 rounded transition">Dashboard</a>
+            <a href="index.php?action=logout" class="text-[10px] text-slate-500 hover:text-white transition uppercase font-bold">Logout</a>
+        <?php else: ?>
+            <a href="index.php?action=login" class="text-xs font-bold hover:text-emerald-400 transition uppercase tracking-widest">Login</a>
+            <a href="index.php?action=register" class="bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] font-black uppercase px-4 py-2 rounded transition">Join Fleet</a>
+        <?php endif; ?>
+    </div>
+</nav>
+<!-- No <div> starts here. The views will start their own <main> tags. -->
