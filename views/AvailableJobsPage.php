@@ -3,14 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Job Feed - OpsNerds</title>
-    <style>
-        body { font-family: sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; line-height: 1.6; }
-        .job-card { border: 1px solid #eee; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        .job-card h2 { margin-top: 0; color: #007BFF; }
-        .meta { color: #666; font-size: 0.9em; margin-bottom: 10px; }
-        .tag { background: #e9ecef; padding: 2px 8px; border-radius: 4px; font-size: 0.8em; }
-        .btn { display: inline-block; padding: 8px 12px; background: #28a745; color: white; text-decoration: none; border-radius: 4px; }
-    </style>
 </head>
 <body>
 <?php include __DIR__ . '/partials/header.php'; ?>
