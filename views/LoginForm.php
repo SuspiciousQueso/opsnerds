@@ -1,3 +1,4 @@
+<?php include __DIR__ . '/partials/header.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +7,7 @@
     <style>body { font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 0; }</style>
 </head>
 <body>
-<?php include __DIR__ . '/partials/header.php'; ?>
+
 
 <div style="padding: 20px;">
     <h1>Login</h1>
