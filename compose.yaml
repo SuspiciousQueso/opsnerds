@@ -1,37 +1,37 @@
 services:
-  php:
+  opsnerds-caddy:
+    image: caddy:2
+    container_name: opsnerds-caddy
+    depends_on:
+      - opsnerds-php
+    ports:
+      # Pick a unique host port; NPM proxies to this (example 8088)
+      - "8088:80"
+    volumes:
+      - .:/var/www/html:delegated
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+    networks:
+      - opsnerds_internal
+      - infrastructure_management_net
+    restart: unless-stopped
+
+  opsnerds-php:
     build:
       context: .
       dockerfile: docker/php/Dockerfile
+    container_name: opsnerds-php
     volumes:
-      - .:/var/www/html
+      - .:/var/www/html:delegated
     depends_on:
-      db:
+      opsnerds-db:
         condition: service_healthy
+    networks:
+      - opsnerds_internal
+    restart: unless-stopped
 
-  caddy:
-    image: caddy:latest
-    ports:
-      - "80:80"
-    volumes:
-      - .:/var/www/html
-      - ./Caddyfile:/etc/caddy/Caddyfile
-    depends_on:
-      - php
-
-  phpmyadmin:
-    image: phpmyadmin:latest
-    ports:
-      - "8080:80"
-    environment:
-      - PMA_HOST=db
-      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD:-root_password_here}
-    depends_on:
-      db:
-        condition: service_healthy
-
-  db:
-    image: mariadb:10.11
+  opsnerds-db:
+    image: mariadb:11
+    container_name: opsnerds-db
     environment:
       MARIADB_DATABASE: ${DB_NAME:-opsnerds}
       MARIADB_USER: ${DB_USER:-opsnerds}
@@ -44,7 +44,17 @@ services:
       retries: 10
     volumes:
       - db_data:/var/lib/mysql
-      - ./migrations/master_init.sql:/docker-entrypoint-initdb.d/1-setup.sql
+      - ./migrations/master_init.sql:/docker-entrypoint-initdb.d/1-setup.sql:ro
+    networks:
+      - opsnerds_internal
+    restart: unless-stopped
 
 volumes:
   db_data:
+
+networks:
+  opsnerds_internal:
+    driver: bridge
+
+  infrastructure_management_net:
+    external: true

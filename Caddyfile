@@ -1,9 +1,9 @@
 :80 {
     root * /var/www/html/public
-    php_fastcgi php:9000
+    php_fastcgi opsnerds-php:9000
     file_server
 
     log {
-        output stdout
-    }
+            output stdout
+        }
 }
