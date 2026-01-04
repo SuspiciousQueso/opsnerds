@@ -8,10 +8,10 @@
         if (!el) return;
 
         // If shown already in this tab session, remove it
-        if (sessionStorage.getItem(key) === '1') {
-            el.remove();
-            return;
-        }
+       // if (sessionStorage.getItem(key) === '1') {
+       //     el.remove();
+        //    return;
+       // }
 
         sessionStorage.setItem(key, '1');
 
