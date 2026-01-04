@@ -31,7 +31,7 @@ docker compose logs -f
 docker compose up -d --build
 ```
 
-The application will be available at: https://jobs.mspguild.tech (configured in Caddyfile)
+The application will be available at: https://ops.mspguild.tech (configured in Caddyfile)
 
 ### Database Access
 
