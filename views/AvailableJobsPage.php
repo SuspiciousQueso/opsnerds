@@ -18,7 +18,7 @@
         <div class="p-12 max-w-5xl mx-auto">
             <header class="mb-12">
                 <h1 class="text-5xl font-black text-slate-900 tracking-tighter uppercase">Browse <span class="text-emerald-600">Workspace</span></h1>
-                <p id="scan-msg" class="text-slate-700 font-mono text-xs mt-2 opacity-0">
+                <p id="scan-msg" class="text-slate-700 font-mono text-xs mt-2">
                     Scanning active infrastructure incidents...
                 </p>
             </header>

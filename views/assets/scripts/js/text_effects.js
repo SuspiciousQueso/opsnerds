@@ -2,13 +2,21 @@
 // Safe to include globally
 
 (function () {
-    function runScanMessage() {
-        const key = 'ops_scan_msg_seen';
-        const el = document.getElementById('scan-msg');
-        if (!el) return;
+    const key = 'ops_scan_msg_seen';
 
-       //If shown already in this tab session, remove it
+    function runScanMessage() {
+        const el = document.getElementById('scan-msg');
+
+        if (!el) {
+            console.warn('[text_effects] #scan-msg not found');
+            return;
+        }
+
+        console.log('[text_effects] scan effect running');
+
+        // If we've shown it this session, hide/remove immediately
         if (sessionStorage.getItem(key) === '1') {
+            console.log('[text_effects] already seen this session, removing');
             el.remove();
             return;
         }
