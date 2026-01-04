@@ -46,5 +46,5 @@
         </div>
     </form>
 </div>
-
-<?php include __DIR__ . '/partials/footer.php'; ?>
+<!-- Temporarily removing until I build out the footer.-->
+<?php //include __DIR__ . '/partials/footer.php'; ?>

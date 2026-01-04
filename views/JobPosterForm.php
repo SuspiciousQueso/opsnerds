@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php include __DIR__ . '/partials/header.php'; ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
