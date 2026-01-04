@@ -40,7 +40,7 @@
                 <div class="bg-slate-950 p-6 border border-slate-800 rounded-lg">
                     <p class="text-red-500 mb-4 font-bold uppercase tracking-widest">We Don't:</p>
                     <ul class="space-y-2 text-slate-500">
-                        <li>- Design logos</li>
+                        <li>- Waste your time</li>
                         <li>- Pitch MVPs</li>
                         <li>- Sell buzzwords</li>
                     </ul>
