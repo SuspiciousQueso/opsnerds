@@ -21,3 +21,4 @@
     <input type="text" name="budget" placeholder="e.g. $50 - $100">
 
     <button type="submit">Post Job</button>
+</form>
