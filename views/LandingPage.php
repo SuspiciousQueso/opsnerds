@@ -33,7 +33,7 @@
         <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
                 <h2 class="text-4xl font-black mb-6 uppercase tracking-tight">Most platforms are built for <span class="text-slate-500">projects.</span><br>OpsNerds is built for <span class="text-emerald-500">operations.</span></h2>
-                <p class="text-lg text-slate-400 leading-relaxed">If you need an app built, go to Freelancer or Upwork. If you need that app to <span class="text-white font-bold italic">work</span>, keep reading.</p>
+                <p class="text-lg text-slate-400 leading-relaxed">If you need an app built, go to Freelancer or Upwork. They are great resources for that! However, If you need that app to <span class="text-white font-bold italic">work as designed</span>, you're in the right place. Keep reading.</p>
             </div>
             
             <div class="grid grid-cols-2 gap-4 font-mono text-xs">
