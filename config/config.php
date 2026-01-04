@@ -12,9 +12,9 @@ define('APP_ENV', Environment::get('APP_ENV'));
 
 // Database constants
 define('DB_HOST', Environment::get('DB_HOST'));
-define('DB_NAME', Environment::get('DB_NAME'));
-define('DB_USER', Environment::get('DB_USER'));
-define('DB_PASS', Environment::get('DB_PASSWORD'));
+define('DB_NAME', Environment::get('MARIADB_DB'));
+define('DB_USER', Environment::get('MARIADB_DBU'));
+define('DB_PASS', Environment::get('MARIADB_DBU_PW'));
 
 // Error reporting (only in development)
 if (Environment::isDebug()) {
