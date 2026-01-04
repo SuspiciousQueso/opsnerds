@@ -1,6 +1,6 @@
 <?php include __DIR__ . '/partials/header.php'; ?>
 
-<div class="max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto px-6 py-10">
+<div class="w-full max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto px-6 py-10">
     <div class="mb-6">
         <a href="index.php?action=dashboard"
            class="text-slate-300 hover:text-emerald-400 transition text-sm">

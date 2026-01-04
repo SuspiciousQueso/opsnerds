@@ -9,7 +9,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
     <script src="https://cdn.tailwindcss.com"></script>
     <title>OpsNerds - Infrastructure Ready</title>
 </head>
-<body class="h-full bg-slate-900 flex flex-col m-0 p-0 overflow-x-hidden">
+<body class="h-full bg-slate-900 flex flex-col items-stretch m-0 p-0 overflow-x-hidden">
 
 
 <nav class="w-full bg-slate-900 text-white px-6 py-3 flex justify-between items-center z-50 border-b border-slate-800 shrink-0">
