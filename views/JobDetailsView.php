@@ -11,7 +11,7 @@
     </aside>
 
     <!-- CENTER PANE: The Job Ticket -->
-    <section class="flex-1 overflow-y-auto bg-white rounded-tl-[3rem] shadow-2xl">
+    <section class="flex-1 overflow-y-auto bg-slate-300 rounded-tl-[3rem] shadow-2xl">
         <div class="p-12 max-w-4xl mx-auto">
             <header class="mb-12 border-b border-slate-100 pb-12">
                 <div class="flex items-center gap-2 mb-4">
