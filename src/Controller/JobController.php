@@ -20,23 +20,93 @@ class JobController {
      * Handle the POST request to save a job
      */
     public function store() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['user_id'])) {
-            $title = trim($_POST['title']);
-            $category = $_POST['category'];
-            $description = trim($_POST['description']);
-            $budget = trim($_POST['budget']);
-
-            $db = Database::getInstance();
-            $stmt = $db->prepare("INSERT INTO jobs (poster_id, title, category, description, budget) VALUES (?, ?, ?, ?, ?)");
-            
-            if ($stmt->execute([$_SESSION['user_id'], $title, $category, $description, $budget])) {
-                header("Location: index.php?action=browse_jobs&status=posted");
-                exit;
-            } else {
-                die("Failed to post job.");
-            }
+        if (!isset($_SESSION['user_id'])) {
+            header("Location: index.php?action=login");
+            exit;
         }
+
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header("Location: index.php?action=post_job");
+            exit;
+        }
+
+        // NOTE:
+        // You already run Helpers::verify_csrf() globally in index.php.
+        // So if CSRF fails, it likely exits/throws before reaching here.
+        // If you want per-form CSRF handling instead, we can adjust later.
+
+        $title = trim($_POST['title'] ?? '');
+        $category = trim($_POST['category'] ?? 'server');
+        $description = trim($_POST['description'] ?? '');
+        $budget = trim($_POST['budget'] ?? '');
+
+        $allowedCategories = ['server', 'web', 'network', 'general'];
+
+        $errors = [];
+
+        if ($title === '' || mb_strlen($title) < 3) {
+            $errors[] = "Job Title is required (min 3 characters).";
+        }
+
+        if (!in_array($category, $allowedCategories, true)) {
+            $errors[] = "Invalid category selected.";
+        }
+
+        if ($description === '' || mb_strlen($description) < 20) {
+            $errors[] = "Description is required (min 20 characters).";
+        }
+
+        if (mb_strlen($budget) > 100) {
+            $errors[] = "Budget is too long.";
+        }
+
+        if ($errors) {
+            // Store for the redirect so create() can display them
+            $_SESSION['form_errors'] = $errors;
+            $_SESSION['form_old'] = [
+                'title' => $title,
+                'category' => $category,
+                'description' => $description,
+                'budget' => $budget,
+            ];
+
+            header("Location: index.php?action=post_job");
+            exit;
+        }
+
+        $db = Database::getInstance();
+
+        // your schema uses poster_id
+        $stmt = $db->prepare("
+        INSERT INTO jobs (poster_id, title, category, description, budget)
+        VALUES (?, ?, ?, ?, ?)
+    ");
+
+        $ok = $stmt->execute([
+            $_SESSION['user_id'],
+            $title,
+            $category,
+            $description,
+            ($budget === '' ? null : $budget),
+        ]);
+
+        if ($ok) {
+            header("Location: index.php?action=browse_jobs&status=posted");
+            exit;
+        }
+
+        // Fail safe
+        $_SESSION['form_errors'] = ["Failed to post job. Please try again."];
+        $_SESSION['form_old'] = [
+            'title' => $title,
+            'category' => $category,
+            'description' => $description,
+            'budget' => $budget,
+        ];
+        header("Location: index.php?action=post_job");
+        exit;
     }
+
 
     /**
      * List all available jobs for Seekers

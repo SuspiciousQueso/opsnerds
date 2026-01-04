@@ -9,18 +9,17 @@
     </div>
 
     <h1 class="text-2xl font-semibold text-slate-100 mb-2">Post a New Job</h1>
-    <p class="text-sm text-slate-400 mb-8">
-        Describe the work clearly. More detail = faster, better responses.
-    </p>
+    <p class="text-sm text-slate-400 mb-8">Clear details get faster help.</p>
 
     <?php
-    // Optional: allow sticky fields + errors if your controller sets these
-    $old    = $old ?? [];
+    $old = $old ?? [];
     $errors = $errors ?? [];
 
-    $val = function(string $key, $default = '') use ($old) {
+    $val = function(string $key, string $default = '') use ($old) {
         return htmlspecialchars($old[$key] ?? $default, ENT_QUOTES, 'UTF-8');
     };
+
+    $cat = $old['category'] ?? 'server';
     ?>
 
     <?php if (!empty($errors)): ?>
@@ -37,7 +36,6 @@
     <form action="index.php?action=do_post_job" method="POST" class="space-y-6">
         <?= \App\Security\Helpers::csrf_field(); ?>
 
-        <!-- Job Title -->
         <div>
             <label for="title" class="block text-sm text-slate-300 mb-2">Job Title</label>
             <input
@@ -49,15 +47,11 @@
                     required
                     class="w-full rounded-md bg-slate-900/50 border border-slate-700 text-slate-100 px-4 py-3
                        focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                    autocomplete="off"
             />
-            <p class="mt-2 text-xs text-slate-500">Keep it short and specific.</p>
         </div>
 
-        <!-- Category -->
         <div>
             <label for="category" class="block text-sm text-slate-300 mb-2">Category</label>
-            <?php $cat = $old['category'] ?? 'server'; ?>
             <select
                     id="category"
                     name="category"
@@ -71,7 +65,6 @@
             </select>
         </div>
 
-        <!-- Description -->
         <div>
             <label for="description" class="block text-sm text-slate-300 mb-2">Description</label>
             <textarea
@@ -79,23 +72,12 @@
                     name="description"
                     rows="8"
                     required
-                    placeholder="Describe the issue, required skills, what you’ve tried, timelines, access expectations, etc."
+                    placeholder="Describe the issue, required skills, what you tried, urgency, etc."
                     class="w-full rounded-md bg-slate-900/50 border border-slate-700 text-slate-100 px-4 py-3
                        focus:outline-none focus:ring-2 focus:ring-emerald-500"
             ><?= $val('description'); ?></textarea>
-
-            <div class="mt-2 text-xs text-slate-500 space-y-1">
-                <p>Helpful details:</p>
-                <ul class="list-disc pl-5 space-y-1">
-                    <li>Environment (Ubuntu 24.04, Docker, Caddy/NPM, etc.)</li>
-                    <li>Error messages / logs</li>
-                    <li>What you already tried</li>
-                    <li>Deadline / urgency</li>
-                </ul>
-            </div>
         </div>
 
-        <!-- Budget -->
         <div>
             <label for="budget" class="block text-sm text-slate-300 mb-2">Budget Range (Optional)</label>
             <input
@@ -103,17 +85,12 @@
                     id="budget"
                     name="budget"
                     value="<?= $val('budget'); ?>"
-                    placeholder="e.g. $50 - $100 (or 'Open')"
+                    placeholder="e.g. $50 - $100"
                     class="w-full rounded-md bg-slate-900/50 border border-slate-700 text-slate-100 px-4 py-3
                        focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                    autocomplete="off"
             />
-            <p class="mt-2 text-xs text-slate-500">
-                Leave blank if you don’t know yet.
-            </p>
         </div>
 
-        <!-- Buttons -->
         <div class="flex items-center gap-4 pt-2">
             <button
                     type="submit"
@@ -131,4 +108,4 @@
     </form>
 </div>
 
-<?php //include __DIR__ . '/partials/footer.php'; ?>
+<?php // include __DIR__ . '/partials/footer.php'; ?>
