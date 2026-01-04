@@ -35,8 +35,8 @@ services:
     environment:
       MARIADB_DATABASE: ${DB_NAME:-opsnerds}
       MARIADB_USER: ${DB_USER:-opsnerds}
-      MARIADB_PASSWORD: ${DB_PASSWORD:-opsnerds_password}
-      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root_password_here}
+      MARIADB_PASSWORD: ${DB_PASSWORD:-Vowel1-Breath-!Plural-Suggest-Original-Wheat_26}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-By-Impossible8-Happen-@Method-Expect-Comfortable_34}
     healthcheck:
       test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
       interval: 5s
