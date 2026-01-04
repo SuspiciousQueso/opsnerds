@@ -20,7 +20,7 @@
     </aside>
 
     <!-- CENTER PANE: The Job Feed -->
-    <section class="flex-1 overflow-y-auto bg-slate-700 rounded-tl-[3rem] shadow-2xl">
+    <section class="flex-1 overflow-y-auto bg-slate-300 rounded-tl-[3rem] shadow-2xl">
         <div class="p-12 max-w-5xl mx-auto">
             <header class="mb-12">
                 <h1 class="text-5xl font-black text-slate-900 tracking-tighter uppercase">Browse <span class="text-emerald-600">Workspace</span></h1>
