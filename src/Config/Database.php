@@ -11,10 +11,10 @@ class Database {
     private $connection;
 
     private function __construct() {
-        $host = getenv('DB_HOST') ?: 'db';
-        $name = getenv('DB_NAME') ?: 'opsnerds';
-        $user = getenv('DB_USER') ?: 'opsnerds';
-        $pass = getenv('DB_PASSWORD') ?: 'opsnerds_password';
+        $host = getenv('DB_HOST') ?: 'opsnerds-db';
+        $name = getenv('MARIADB_DB') ?: 'opsnerds';
+        $user = getenv('MARIADB_DBU') ?: 'opsnerds';
+        $pass = getenv('MARIADB_DBU_PW') ?: 'Vowel1-Breath-!Plural-Suggest-Original-Wheat_26';
 
         try {
             $dsn = "mysql:host=$host;dbname=$name;charset=utf8mb4";
