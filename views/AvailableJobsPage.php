@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Job Feed - OpsNerds</title>
-</head>
-<body>
+
 <?php include __DIR__ . '/partials/header.php'; ?>
 
 <main class="flex-1 flex overflow-hidden w-full bg-slate-950">
@@ -87,5 +81,3 @@
     <div class="font-mono text-emerald-900 uppercase">System Ready</div>
 </footer>
 
-</body>
-</html>
