@@ -10,6 +10,7 @@ class Environment
 
     /**
      * Load and validate environment variables
+     * @throws ConfigurationException
      */
     public static function load(): void
     {
