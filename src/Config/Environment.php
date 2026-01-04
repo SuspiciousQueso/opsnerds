@@ -42,9 +42,9 @@ class Environment
             'APP_ENV',
             'APP_URL',
             'DB_HOST',
-            'DB_NAME',
-            'DB_USER',
-            'DB_PASSWORD',
+            'MARIADB_DB',
+            'MARIADB_DBU',
+            'MARIADB_DBU_PW',
             'SESSION_LIFETIME',
             'PASSWORD_MIN_LENGTH',
         ];
