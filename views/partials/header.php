@@ -7,6 +7,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../assets/scripts/js/text_effects.js" defer></script>
     <title>OpsNerds - Infrastructure Ready</title>
 </head>
 <body class="h-full bg-slate-900 flex flex-col items-stretch m-0 p-0 overflow-x-hidden">
