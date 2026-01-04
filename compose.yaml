@@ -33,10 +33,11 @@ services:
     image: mariadb:11
     container_name: opsnerds-db
     environment:
-      MARIADB_DATABASE: ${DB_NAME:-opsnerds}
-      MARIADB_USER: ${DB_USER:-opsnerds}
-      MARIADB_PASSWORD: ${DB_PASSWORD:-Vowel1-Breath-!Plural-Suggest-Original-Wheat_26}
-      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-By-Impossible8-Happen-@Method-Expect-Comfortable_34}
+      MARIADB_DATABASE: ${MARIADB_DB}
+      MARIADB_USER: ${MARIADB_DBU}
+      MARIADB_PASSWORD: ${MARIADB_DBU_PW}
+      MARIADB_ROOT_PASSWORD: ${MARIADB_DBR_PW}
+
     healthcheck:
       test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
       interval: 5s

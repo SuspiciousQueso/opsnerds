@@ -11,10 +11,14 @@ class Database {
     private $connection;
 
     private function __construct() {
-        $host = getenv('DB_HOST') ?: 'opsnerds-db';
-        $name = getenv('MARIADB_DB') ?: 'opsnerds';
-        $user = getenv('MARIADB_DBU') ?: 'opsnerds';
-        $pass = getenv('MARIADB_DBU_PW') ?: 'Vowel1-Breath-!Plural-Suggest-Original-Wheat_26';
+        $host = Environment::get('DB_HOST', 'opsnerds-db');
+        $name = Environment::get('MARIADB_DB', 'opsnerds');
+        $user = Environment::get('MARIADB_DBU', 'opsnerds');
+        $pass = Environment::get('MARIADB_DBU_PW');
+
+        if (!$pass) {
+            throw new RuntimeException("Database password not set (MARIADB_DBU_PW).");
+        }
 
         try {
             $dsn = "mysql:host=$host;dbname=$name;charset=utf8mb4";
@@ -24,7 +28,6 @@ class Database {
                 PDO::ATTR_EMULATE_PREPARES => false,
             ]);
         } catch (PDOException $e) {
-            // In a real app, we'd log this via Monolog
             throw new RuntimeException("Database connection failed: " . $e->getMessage());
         }
     }
