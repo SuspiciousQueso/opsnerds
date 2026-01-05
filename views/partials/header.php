@@ -1,6 +1,23 @@
 <?php
 $isLoggedIn = isset($_SESSION['user_id']);
-?>
+
+if (!defined('DISABLE_DEV_BANNER')): ?>
+<div class="w-full bg-slate-900 border-b border-slate-800 text-slate-300 text-xs md:text-sm">
+    <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-2">
+            <span class="text-amber-400 font-semibold uppercase tracking-wide">
+                Dev Notice
+            </span>
+            <span class="hidden sm:inline">
+                This site is under active development. Some features may be incomplete or reset.
+            </span>
+            <span class="sm:hidden">
+                Active development in progress.
+            </span>
+        </div>
+    </div>
+</div>
+<?php endif; ?>
 <!DOCTYPE html>
 <html lang="en" class="h-full">
 <head>

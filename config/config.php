@@ -5,6 +5,9 @@ use App\Config\Environment;
 // Load environment variables
 Environment::load();
 
+// Development banner toggle
+define('DISABLE_DEV_BANNER', false);
+
 // Application constants
 define('APP_NAME', Environment::get('APP_NAME'));
 define('APP_URL', Environment::get('APP_URL'));
