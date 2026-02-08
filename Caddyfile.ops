@@ -1,0 +1,13 @@
+{
+    frankenphp
+}
+
+# Use the SERVER_NAME env var from docker-compose
+{$SERVER_NAME} {
+    # Set the webroot to public/
+    root * /var/www/html/public
+    # Enable compression
+    encode zstd gzip
+    # Execute PHP files
+    php_server
+}
